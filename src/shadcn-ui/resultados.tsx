@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Data from '../data/resultados.json';
 
 function ListaDeResultados() {
@@ -14,6 +15,13 @@ function ListaDeResultados() {
                             <div>
                                 { elem.empresa }
                             </div>
+                            <Link href={
+                                {
+                                    pathname: '/puesto/',
+                                    query: {
+                                        id: elem.id,
+                                    }
+                                }}>Postular</Link>
                         </div>
                     );
                 })

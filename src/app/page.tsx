@@ -4,8 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { stringify } from 'querystring';
 import { NavBar } from '@/shadcn-ui/navbar';
-import { ListaDeResultados } from '@/shadcn-ui/resultados';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 let isLoggedIn = true;
 

@@ -1,10 +1,13 @@
-import Data from '../data/resultados.json';
+import Link from 'next/link';
+import { AccederArchivos } from '@/funciones/AccederArchivos';
 
 function ListaDeResultados() {
-    console.log('Mis resultados');
+    const data : string = AccederArchivos();
+    //const jsonData = JSON.parse(data);
+    //console.log('Mis resultados' + jsonData.sin);
     return(
         <div>
-            {
+            {/*
                 Data.map( elem => {
                     return(
                         <div>
@@ -14,9 +17,16 @@ function ListaDeResultados() {
                             <div>
                                 { elem.empresa }
                             </div>
+                            <Link href={
+                                {
+                                    pathname: '/puesto/',
+                                    query: {
+                                        id: elem.id,
+                                    }
+                                }}>Postular</Link>
                         </div>
                     );
-                })
+                })*/
             }
         </div>
     );

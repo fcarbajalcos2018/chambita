@@ -1,14 +1,25 @@
+import Leer from '@/api/leer';
 import Link from 'next/link';
-import { AccederArchivos } from '@/funciones/AccederArchivos';
 
 function ListaDeResultados() {
-    const data : string = AccederArchivos();
+    const data = Leer();
+    let jsonData = [
+        {
+            "id": "-1",
+            "puesto": "-----",
+            "empresa": "-----"
+        }
+    ];
+    console.log(`Datos: ${JSON.stringify(data)}`);
+    if (data != null) {
+        jsonData = data
+    }
     //const jsonData = JSON.parse(data);
     //console.log('Mis resultados' + jsonData.sin);
     return(
         <div>
-            {/*
-                Data.map( elem => {
+            {
+                jsonData.map( elem => {
                     return(
                         <div>
                             <div>
@@ -26,7 +37,7 @@ function ListaDeResultados() {
                                 }}>Postular</Link>
                         </div>
                     );
-                })*/
+                })
             }
         </div>
     );

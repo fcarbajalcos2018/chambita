@@ -1,10 +1,9 @@
 "use client"
 
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { stringify } from 'querystring';
 import { NavBar } from '@/shadcn-ui/navbar';
 import { useEffect } from 'react';
+import { ListaDeResultados } from '@/shadcn-ui/resultados';
 
 let isLoggedIn = true;
 

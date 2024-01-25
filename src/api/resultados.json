@@ -1,4 +1,4 @@
-[
+{"puestos": [
     {
         "id": 1,
         "puesto": "Desarrollador Android",
@@ -15,3 +15,4 @@
         "empresa": "Microsoft"
     }
 ]
+}

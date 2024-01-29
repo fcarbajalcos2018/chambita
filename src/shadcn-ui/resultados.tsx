@@ -34,7 +34,7 @@ function ListaDeResultados() {
                                     query: {
                                         id: elem.id,
                                     }
-                                }}>Postular</Link>
+                                }}>Mas información</Link>
                         </div>
                     );
                 })

@@ -5,6 +5,9 @@ import React from "react";
 import { useSearchParams } from "next/navigation";
 //import Data from '../../data/resultados.json';
 import { PathParamsContext } from "next/dist/shared/lib/hooks-client-context.shared-runtime";
+import Leer from "@/api/leer";
+import { Button } from "@/shadcn-ui/ui/button";
+import Link from "next/link";
 
 interface Props{
     id: string;
@@ -18,26 +21,39 @@ type Puesto = {
 
 function InformacionDePuesto() {
     
-    const info = ConseguirInformacionDelPuesto();
+    let info = ConseguirInformacionDelPuesto();
     return(
         <div>
-            
+            <div>Puesto: {info?.puesto} </div>
+            <div>Empresa: {info?.empresa} </div>
+            <Button asChild>
+                <Link href="/postular">Postular</Link>
+            </Button>
         </div>
     );
 }
 
 function ConseguirInformacionDelPuesto() {
     const param = useSearchParams().get('id');
-    const paramInt = param !== null ? parseInt(param) : 0
 
     console.log('d' + param);
-    const data = 'data';
-    //const data = Data.find(elem => elem.id === paramInt);
-    /*let puesto : Puesto = {
-        id: Data.at( ),
-    };*/
+    const data = Leer();
+    let jsonData = [
+        {
+            "id": "-1",
+            "puesto": "-----",
+            "empresa": "-----"
+        }
+    ];
+    console.log(`Datos: ${JSON.stringify(data)}`);
+    if (data == null) {
+        return jsonData[0];
+    }
+    jsonData = data
+    const jobData = jsonData.find(elem => elem.id === param);
+    console.log(jobData);
 
-    return data;
+    return jobData;
 }
 
 export default InformacionDePuesto;

@@ -8,21 +8,33 @@ import { Input } from "@/shadcn-ui/ui/input";
 import { Button } from "@/shadcn-ui/ui/button";
 import { format } from "path";
 
-const phone = zod.string().refine(num => {
-    num.length <= 10;
-    Number(num) === parseInt(num);
-}, {
-    message: "Numero telefónico requiere incluír solo numeros del 0 al 9 y no exceder a más de 10 digitos.",
+const Email = zod.string().email("Correo electrónico requiere ser proporcionado como sigue: nombre@exemplo.com");
+const Name = zod.string();
+const Surname = zod.string();
+const Phone = zod.string().max(10).refine(num =>
+    phoneVerify(num), {
+    message: "Numero telefónico requiere incluír solo números del 0 al 9 y no exceder a más de 10 digitos.",
 });
 
+const phoneVerify = (phone: string) => {
+    for (const digit of phone) {
+        if (!parseInt(digit)) {
+            console.log('Numero telefónico requiere incluír solo números del 0 al 9 y no exceder a más de 10 digitos.')
+            return false;
+        }
+    }
+    return true;
+}
+
 const zodSend = zod.object({
-    email: zod.string().email(),
-    name: zod.string(),
-    surname: zod.string(),
-    phoneNo: phone,
+    email: Email,
+    name: Name,
+    surname: Surname,
+    phoneNo: Phone,
 });
 
 function enviar(postulacion: zod.infer<typeof zodSend>) {
+    console.log('dddds');
     console.log(postulacion);
 }
 
@@ -35,11 +47,14 @@ export default function Postular() {
             surname: "",
             phoneNo: "",
         }});
+    const procesarPost = (postulacion: zod.infer<typeof zodSend>) => {
+        console.log(postulacion);
+    }
     return(<div>
         <Form {...form}>
             <form onSubmit={form.handleSubmit(enviar)}>
                 <FormField control={form.control} name = "email"
-                render={field => {
+                render={({field}) => {
                     return (
                         <FormItem>
                             <FormLabel>Correo Electrónico</FormLabel>
@@ -55,7 +70,7 @@ export default function Postular() {
                         );
                 }}/>
                 <FormField control={form.control} name = "name"
-                    render={(field) => {
+                    render={({field}) => {
                         return(
                             <FormItem>
                                 <FormLabel>Nombre</FormLabel>
@@ -70,7 +85,7 @@ export default function Postular() {
                         );
                     }}/>
                     <FormField control={form.control} name = "surname"
-                    render={(field) => {
+                    render={({field}) => {
                         return(
                             <FormItem>
                                 <FormLabel>Apellido(s)</FormLabel>
@@ -85,7 +100,7 @@ export default function Postular() {
                         );
                     }}/>
                     <FormField control={form.control} name = "phoneNo"
-                    render={(field) => {
+                    render={({field}) => {
                         return(
                             <FormItem>
                                 <FormLabel>Numero Telefónico</FormLabel>

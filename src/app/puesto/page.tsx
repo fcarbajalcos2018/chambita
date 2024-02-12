@@ -1,23 +1,10 @@
 "use client"
 
-import { Url } from "next/dist/shared/lib/router/router";
 import React from "react";
 import { useSearchParams } from "next/navigation";
-//import Data from '../../data/resultados.json';
-import { PathParamsContext } from "next/dist/shared/lib/hooks-client-context.shared-runtime";
 import Leer from "@/api/leer";
 import { Button } from "@/shadcn-ui/ui/button";
 import Link from "next/link";
-
-interface Props{
-    id: string;
-}
-
-type Puesto = {
-    id: string;
-    puesto: string;
-    empresa: string;
-}
 
 function InformacionDePuesto() {
     
@@ -27,7 +14,14 @@ function InformacionDePuesto() {
             <div>Puesto: {info?.puesto} </div>
             <div>Empresa: {info?.empresa} </div>
             <Button asChild>
-                <Link href="/postular">Postular</Link>
+                <Link href={
+                    {
+                        pathname: "/postular/",
+                        query: {
+                            id: info?.id,
+                        }
+                    }
+                }>Postular</Link>
             </Button>
         </div>
     );

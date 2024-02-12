@@ -7,6 +7,7 @@ import * as zod from "zod";
 import { Input } from "@/shadcn-ui/ui/input";
 import { Button } from "@/shadcn-ui/ui/button";
 import { format } from "path";
+import { useParams, useSearchParams } from "next/navigation";
 
 const Email = zod.string().email("Correo electrónico requiere ser proporcionado como sigue: nombre@exemplo.com");
 const Name = zod.string();
@@ -33,9 +34,17 @@ const zodSend = zod.object({
     phoneNo: Phone,
 });
 
-function enviar(postulacion: zod.infer<typeof zodSend>) {
+function enviar(postulacion: zod.infer<typeof zodSend>, aid: string) {
     console.log('dddds');
     console.log(postulacion);
+    const postulacionEnv = {
+        id: aid,
+        email: postulacion.email,
+        name: postulacion.name,
+        surname: postulacion.surname,
+        phoneNo: postulacion.phoneNo,
+    }
+    console.log(postulacionEnv);
 }
 
 export default function Postular() {
@@ -47,12 +56,10 @@ export default function Postular() {
             surname: "",
             phoneNo: "",
         }});
-    const procesarPost = (postulacion: zod.infer<typeof zodSend>) => {
-        console.log(postulacion);
-    }
+    const postId = useSearchParams().get('id');
     return(<div>
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(enviar)}>
+            <form onSubmit={form.handleSubmit(data => enviar(data, postId ?? ''))}>
                 <FormField control={form.control} name = "email"
                 render={({field}) => {
                     return (

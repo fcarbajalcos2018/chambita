@@ -1,18 +1,22 @@
-{"puestos": [
-    {
-        "id": 1,
-        "puesto": "Desarrollador Android",
-        "empresa": "Samsung"
-    },
-    {
-        "id": 2,
-        "puesto": "Diseño de Interfaz",
-        "empresa": "Xerox"
-    },
-    {
-        "id": 3,
-        "puesto": "Desarrollador Backend",
-        "empresa": "Microsoft"
-    }
-]
+{
+    "puestos": [
+        {
+            "id": 1,
+            "puesto": "Desarrollador Android",
+            "empresa": "Samsung"
+        },
+        {
+            "id": 2,
+            "puesto": "Diseño de Interfaz",
+            "empresa": "Xerox"
+        },
+        {
+            "id": 3,
+            "puesto": "Desarrollador Backend",
+            "empresa": "Microsoft"
+        }
+    ],
+    "postulaciones": [
+        
+    ]
 }

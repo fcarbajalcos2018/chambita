@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 
-export default function Leer() {  
+export default function Leer(url : string) {  
     console.log(process.cwd())
     const [data, setData] = useState(null);
     useEffect(() => {
         async function cargar() {
             try {
                 console.log('Cargando datos')
-                fetch('http://localhost:3001/puestos').then(res => {
+                fetch(url).then(res => {
                     console.log('red');
                     console.log(res);
                     return res.json();
@@ -25,5 +25,6 @@ export default function Leer() {
         }
         cargar();
     }, [])
+    
     return data;
 }

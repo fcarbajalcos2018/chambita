@@ -2,7 +2,7 @@ import Leer from '@/api/leer';
 import Link from 'next/link';
 
 function ListaDeResultados() {
-    const data = Leer();
+    const data = Leer('http://localhost:3001/puestos');
     let jsonData = [
         {
             "id": "-1",
@@ -11,8 +11,8 @@ function ListaDeResultados() {
         }
     ];
     console.log(`Datos: ${JSON.stringify(data)}`);
-    if (data != null) {
-        jsonData = data
+    if (data !== null) {
+        jsonData = data;
     }
     //const jsonData = JSON.parse(data);
     //console.log('Mis resultados' + jsonData.sin);

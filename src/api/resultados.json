@@ -1,22 +1,50 @@
 {
-    "puestos": [
-        {
-            "id": 1,
-            "puesto": "Desarrollador Android",
-            "empresa": "Samsung"
-        },
-        {
-            "id": 2,
-            "puesto": "Diseño de Interfaz",
-            "empresa": "Xerox"
-        },
-        {
-            "id": 3,
-            "puesto": "Desarrollador Backend",
-            "empresa": "Microsoft"
-        }
-    ],
-    "postulaciones": [
-        
-    ]
+  "puestos": [
+    {
+      "id": 1,
+      "puesto": "Desarrollador Android",
+      "empresa": "Samsung"
+    },
+    {
+      "id": 2,
+      "puesto": "Diseño de Interfaz",
+      "empresa": "Xerox"
+    },
+    {
+      "id": 3,
+      "puesto": "Desarrollador Backend",
+      "empresa": "Microsoft"
+    }
+  ],
+  "postulaciones": [
+    {
+      "id": "123",
+      "email": "fair@asd.cd",
+      "name": "Frank",
+      "surname": "Airlove",
+      "phoneNo": "333442"
+    },
+    {
+      "id": "123",
+      "email": "fafs@asd.cd",
+      "name": "Harvey",
+      "surname": "Hartmann",
+      "phoneNo": "099999"
+    },
+    {
+      "id": "1",
+      "email": "frankair@amail.io",
+      "name": "Frank",
+      "surname": "Airlove",
+      "phoneNo": "2333111"
+    }
+  ],
+  "cuentas": [
+    {
+      "email": "frankair@amail.io",
+      "nombre": "Frank",
+      "apellido": "Airlove",
+      "contraseña": "AAAASSSS"
+    }
+  ]
 }

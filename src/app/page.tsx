@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { ListaDeResultados } from '@/shadcn-ui/resultados';
 import * as zod from 'zod';
 
-let isLoggedIn = true;
+let isLoggedIn = false;
 
 function showPostLogin() {
   

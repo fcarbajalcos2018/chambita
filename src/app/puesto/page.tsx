@@ -31,7 +31,7 @@ function ConseguirInformacionDelPuesto() {
     const param = useSearchParams().get('id');
 
     console.log('d' + param);
-    const data = Leer();
+    const data = Leer('http://localhost:3001/puestos');
     let jsonData = [
         {
             "id": "-1",
@@ -44,7 +44,7 @@ function ConseguirInformacionDelPuesto() {
         return jsonData[0];
     }
     jsonData = data
-    const jobData = jsonData.find(elem => elem.id === param);
+    const jobData = jsonData.find(elem => elem.id == param);
     console.log(jobData);
 
     return jobData;

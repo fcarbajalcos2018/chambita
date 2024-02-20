@@ -8,8 +8,10 @@ import { Input } from "@/shadcn-ui/ui/input";
 import { Button } from "@/shadcn-ui/ui/button";
 import { format } from "path";
 import { useParams, useSearchParams } from "next/navigation";
+import Escribir from "@/api/escribir";
 
-const Email = zod.string().email("Correo electrónico requiere ser proporcionado como sigue: nombre@exemplo.com");
+const Email = zod.string()
+    .email("Correo electrónico requiere ser proporcionado como sigue: nombre@exemplo.com");
 const Name = zod.string();
 const Surname = zod.string();
 const Phone = zod.string().max(10).refine(num =>
@@ -45,6 +47,7 @@ function enviar(postulacion: zod.infer<typeof zodSend>, aid: string) {
         phoneNo: postulacion.phoneNo,
     }
     console.log(postulacionEnv);
+    Escribir('http://localhost:3001/postulaciones', postulacionEnv);
 }
 
 export default function Postular() {
